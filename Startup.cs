@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using fans.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using fans.EntityModels;
 
 namespace fans
 {
@@ -38,9 +39,11 @@ namespace fans
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddDefaultUI(UIFramework.Bootstrap4)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders()
+                .AddDefaultUI(UIFramework.Bootstrap4);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -72,6 +75,8 @@ namespace fans
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            //DummyData.Initialize(context, userManager, roleManager).Wait();// seed here
         }
     }
 }
