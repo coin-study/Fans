@@ -13,6 +13,6 @@ namespace fans.Data
             : base(options) { }
 
         public DbSet<Club> Clubs { get; set; }
-        public DbSet<JoinClub> JoinClubs { get; set; }
+        public DbSet<Member> Members { get; set; }
     }
 }

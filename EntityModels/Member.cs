@@ -2,10 +2,8 @@ using System;
 
 namespace fans.EntityModels
 {
-    public class JoinClub
+    public class Member
     {
-        public Club Club { get; set; }
-        public int MyProperty { get; set; }
         public string ChineseLastName { get; set; }
         public string ChineseFirstName { get; set; }
         public string EnglishLastName { get; set; }
@@ -17,5 +15,9 @@ namespace fans.EntityModels
         public string Wechat { get; set; }
         public string MailingAddress { get; set; }
         public int SharedAddress { get; set; }
+
+        public virtual Club Club { get; set; }
+        public virtual ApplicationUser User { get; set; }
+        
     }
 }
