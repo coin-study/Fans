@@ -1,0 +1,126 @@
+body, html {
+    height: 100%;
+}
+
+.wrapper {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 55px 120px auto 50px;
+    grid-template-areas: 
+        "h h h h h h h h h h h h"
+        "a a a a a a a a a a a a"
+        "c c c c c c c c c c c c"
+        "f f f f f f f f f f f f";
+}
+
+.header {
+    grid-area: h;
+    background-color: color(pri);
+    border-style: none none solid none;
+    border-width: 5px;
+    border-color: color(sec);
+    padding: $padding;
+}
+
+.adv {
+    grid-area: a;
+    background-color: color(temp);
+    margin: $margin $margin 0 $margin;
+}
+
+.menu {
+    background-color: color(temp);
+}
+
+.content {
+    grid-area: c;
+    background-color: color(temp);
+    margin: $margin;
+}
+
+.footer {
+    grid-area: f;
+    background-color: color(pri);
+    padding: $padding;
+}
+
+// header //
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+        height: 100%;
+        width: 200px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    
+        .logo-left {
+            height: 30px;
+            width: 30px;
+            background-image: url(../images/Onigiri.png);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .logo-right {
+            height: 20px;
+            width: 80px;
+            background-image: url(../images/logo-word.png);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            margin-left: $margin-s;
+        }
+    }
+
+    .bars {
+        text-decoration: none;
+        cursor: pointer;
+    }
+}
+
+// menu //
+.menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    background-color: color(pri);
+    overflow-x: hidden;
+    padding-top: 40px;
+    transition: 0.5s;
+
+    a {
+        padding: 8px 8px 8px 20px;
+        text-decoration: none;
+        font-size: 20px;
+        color: color(headline);
+        display: block;
+    }
+
+    a:hover {
+        background-color: color(hover);
+    }
+}
+
+.menu-cover {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+// footer //
+.footer {
+    font-size: 14px;
+}

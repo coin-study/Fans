@@ -21,37 +21,40 @@
         crossorigin="anonymous">
 </head>
 <body>
-
-    <div class="wrapper">
-
-        <div class="header">
-            <a class="logo" asp-controller="Home" asp-action="Index">
-                <div class="logo-left"></div>
-                <div class="logo-right"></div>
-            </a>
-            <div class="bars" onclick="openNav()">
-                <i class="fas fa-bars fa-lg"></i>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-allergies"></i>fans</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-
-        <!-- hidden side navbar  -->
-        <div class="menu" id="myMenu">
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
-        </div>
-
-        <!-- opacity background when side navbar is presented -->
-        <div class="menu-cover" id="myMenuCover" onclick="closeNav()"></div>
-        
-        @RenderBody()
-
-        <div class="footer">
-            <i class="far fa-copyright"></i> 2019
-        </div>
-
+        </nav>
+    </header>
+    <div class="container">
+        <partial name="_CookieConsentPartial" />
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
     </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2019 - fans - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -72,19 +75,6 @@
         </script>
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
-    <script>
-        function openNav() {
-            document.getElementById("myMenu").style.width = "30%";
-            document.getElementById("myMenuCover").style.display = "block";
-        }
-
-        /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
-        function closeNav() {
-            document.getElementById("myMenu").style.width = "0";
-            document.getElementById("myMenuCover").style.display = "none";
-        }
-    </script>
 
     @RenderSection("Scripts", required: false)
 </body>

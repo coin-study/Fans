@@ -10,8 +10,9 @@ namespace fans.Data
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
-        {
-        }
+            : base(options) { }
+
+        public DbSet<Club> Clubs { get; set; }
+        public DbSet<JoinClub> JoinClubs { get; set; }
     }
 }

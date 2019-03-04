@@ -1,4 +1,152 @@
-body {
-  background-color: red;
+body, html {
+  height: 100%;
+}
+
+.wrapper {
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[12];
+      grid-template-columns: repeat(12, 1fr);
+  -ms-grid-rows: 55px 120px auto 50px;
+      grid-template-rows: 55px 120px auto 50px;
+      grid-template-areas: "h h h h h h h h h h h h" "a a a a a a a a a a a a" "c c c c c c c c c c c c" "f f f f f f f f f f f f";
+}
+
+.header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 12;
+  grid-area: h;
+  background-color: #f9ca24;
+  border-style: none none solid none;
+  border-width: 5px;
+  border-color: #f6e58d;
+  padding: 10px;
+}
+
+.adv {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 12;
+  grid-area: a;
+  background-color: #f4f4f4;
+  margin: 10px 10px 0 10px;
+}
+
+.menu {
+  background-color: #f4f4f4;
+}
+
+.content {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 12;
+  grid-area: c;
+  background-color: #f4f4f4;
+  margin: 10px;
+}
+
+.footer {
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 12;
+  grid-area: f;
+  background-color: #f9ca24;
+  padding: 10px;
+}
+
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .logo {
+  height: 100%;
+  width: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .logo .logo-left {
+  height: 30px;
+  width: 30px;
+  background-image: url(../images/Onigiri.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.header .logo .logo-right {
+  height: 20px;
+  width: 80px;
+  background-image: url(../images/logo-word.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin-left: 5px;
+}
+
+.header .bars {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.menu {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  background-color: #f9ca24;
+  overflow-x: hidden;
+  padding-top: 40px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.menu a {
+  padding: 8px 8px 8px 20px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #ff7979;
+  display: block;
+}
+
+.menu a:hover {
+  background-color: #eb4d4b;
+}
+
+.menu-cover {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.footer {
+  font-size: 14px;
 }
 /*# sourceMappingURL=main.css.map */
