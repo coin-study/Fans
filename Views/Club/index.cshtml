@@ -1,0 +1,20 @@
+@model fans.Models.Club.ClubIndexViewModel
+
+<h1>Club</h1>
+
+<table class="table table-hover" id="clubIndexTable">
+    <tbody>
+        @foreach(var club in Model.ClubList)
+        {
+            <tr>
+                <td>
+                    @club.Name
+                </td>
+                <td>
+                    @club.Homepage
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

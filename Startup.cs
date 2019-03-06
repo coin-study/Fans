@@ -14,6 +14,7 @@ using fans.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using fans.EntityModels;
+using fans.Service;
 
 namespace fans
 {
@@ -44,7 +45,9 @@ namespace fans
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders()
                 .AddDefaultUI(UIFramework.Bootstrap4);
-
+            
+            services.AddScoped<IClub, ClubService>();
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
