@@ -3,7 +3,8 @@ using System;
 namespace fans.EntityModels
 {
     public class Member
-    {
+    {   
+        public int Id { get; set; }
         public string ChineseLastName { get; set; }
         public string ChineseFirstName { get; set; }
         public string EnglishLastName { get; set; }
