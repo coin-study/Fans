@@ -1,0 +1,27 @@
+.clubCard {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: $margin;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: 0px 10%;
+    height: 160px;
+    max-width: 550px;
+    cursor: pointer;
+    border-radius: $border-radius;
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+    
+    &:hover {
+        box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.8);
+    }
+
+    .clubCardName {
+        width: 100%;
+        padding: $padding;
+        font-size: 14px;
+        font-weight: bold;
+        color: white;
+        text-shadow: 2px 2px 4px #000000;
+    }
+
+}

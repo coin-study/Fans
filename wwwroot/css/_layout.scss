@@ -1,15 +1,16 @@
 body, html {
     height: 100%;
+    margin: 0 auto;
 }
 
 .wrapper {
     height: 100%;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 55px 120px auto 50px;
+    grid-template-rows: 50px 40px auto 50px;
     grid-template-areas: 
         "h h h h h h h h h h h h"
-        "a a a a a a a a a a a a"
+        "t t t t t t t t t t t t"
         "c c c c c c c c c c c c"
         "f f f f f f f f f f f f";
 }
@@ -17,16 +18,22 @@ body, html {
 .header {
     grid-area: h;
     background-color: color(pri);
-    border-style: none none solid none;
-    border-width: 5px;
-    border-color: color(sec);
     padding: $padding;
 }
 
-.adv {
-    grid-area: a;
-    background-color: color(temp);
+.title {
+    grid-area: t;
+    border-style: none none none none;
+    border-width: 1px;
+    border-color: color(icon);
+    color: color(icon);
+    font-weight: bold;
     margin: $margin $margin 0 $margin;
+    padding: $padding-s;
+
+    i {
+        color: color(icon);
+    }
 }
 
 .menu {
@@ -35,7 +42,6 @@ body, html {
 
 .content {
     grid-area: c;
-    background-color: color(temp);
     margin: $margin;
 }
 

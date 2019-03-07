@@ -19,6 +19,7 @@ namespace fans.Controllers
                             .Select( club => new ClubViewModel {
                                 Id = club.Id,
                                 Name = club.Name,
+                                ChineseName = club.ChineseName,
                                 Homepage = club.Homepage,
                                 ImageUrl = club.ImageUrl
                             });

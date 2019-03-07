@@ -1,5 +1,6 @@
 body, html {
   height: 100%;
+  margin: 0 auto;
 }
 
 .wrapper {
@@ -8,9 +9,9 @@ body, html {
   display: grid;
   -ms-grid-columns: (1fr)[12];
       grid-template-columns: repeat(12, 1fr);
-  -ms-grid-rows: 55px 120px auto 50px;
-      grid-template-rows: 55px 120px auto 50px;
-      grid-template-areas: "h h h h h h h h h h h h" "a a a a a a a a a a a a" "c c c c c c c c c c c c" "f f f f f f f f f f f f";
+  -ms-grid-rows: 50px 40px auto 50px;
+      grid-template-rows: 50px 40px auto 50px;
+      grid-template-areas: "h h h h h h h h h h h h" "t t t t t t t t t t t t" "c c c c c c c c c c c c" "f f f f f f f f f f f f";
 }
 
 .header {
@@ -19,19 +20,25 @@ body, html {
   -ms-grid-column-span: 12;
   grid-area: h;
   background-color: #f9ca24;
-  border-style: none none solid none;
-  border-width: 5px;
-  border-color: #f6e58d;
   padding: 10px;
 }
 
-.adv {
+.title {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   -ms-grid-column-span: 12;
-  grid-area: a;
-  background-color: #f4f4f4;
+  grid-area: t;
+  border-style: none none none none;
+  border-width: 1px;
+  border-color: #535c68;
+  color: #535c68;
+  font-weight: bold;
   margin: 10px 10px 0 10px;
+  padding: 3px;
+}
+
+.title i {
+  color: #535c68;
 }
 
 .menu {
@@ -43,7 +50,6 @@ body, html {
   -ms-grid-column: 1;
   -ms-grid-column-span: 12;
   grid-area: c;
-  background-color: #f4f4f4;
   margin: 10px;
 }
 
@@ -148,5 +154,39 @@ body, html {
 
 .footer {
   font-size: 14px;
+}
+
+.clubCard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 10px;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: 0px 10%;
+  height: 160px;
+  max-width: 550px;
+  cursor: pointer;
+  border-radius: 5px;
+  -webkit-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+          box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+}
+
+.clubCard:hover {
+  -webkit-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.8);
+          box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.8);
+}
+
+.clubCard .clubCardName {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
 }
 /*# sourceMappingURL=main.css.map */

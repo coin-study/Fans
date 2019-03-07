@@ -1,20 +1,23 @@
 @model fans.Models.Club.ClubIndexViewModel
 
-<h1>Club</h1>
+<div class="title">
+    <i class="fas fa-child"></i> 代辦入會服務
+</div>
 
-<table class="table table-hover" id="clubIndexTable">
-    <tbody>
-        @foreach(var club in Model.ClubList)
-        {
-            <tr>
-                <td>
+<div class="content">
+
+    @foreach(var club in Model.ClubList)
+    {
+        <div class="clubCard" style="background-image: url(../@club.ImageUrl);">
+            <div class="clubCardName">
+                <div class="clubCardEnglishName">
                     @club.Name
-                </td>
-                <td>
-                    @club.Homepage
-                </td>
+                </div>
+                <div class="clubCardChineseName">
+                    @club.ChineseName
+                </div>
+            </div>
+        </div>
+    }
 
-            </tr>
-        }
-    </tbody>
-</table>
+</div>
