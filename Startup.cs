@@ -47,6 +47,7 @@ namespace fans
                 .AddDefaultUI(UIFramework.Bootstrap4);
             
             services.AddScoped<IClub, ClubService>();
+            services.AddScoped<IMember, MemberService>();
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
