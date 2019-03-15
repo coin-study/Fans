@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using fans.Data;
 using fans.EntityModels;
@@ -31,12 +32,14 @@ namespace fans.Service
 
         public IEnumerable<Member> GetAllMember(int clubId)
         {
-            throw new System.NotImplementedException();
+            return _context.Members.Where( member => member.Club.Id == clubId);
         }
 
         public Club GetById(int clubId)
         {
-            throw new System.NotImplementedException();
+            return _context.Clubs.Where( club => club.Id == clubId)
+                .Include(club => club.Members)
+                .First();
         }
     }
 }

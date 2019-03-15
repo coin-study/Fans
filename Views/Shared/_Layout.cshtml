@@ -36,10 +36,21 @@
 
         <!-- hidden side navbar  -->
         <div class="menu" id="myMenu">
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
+
+            <partial name="_LoginPartial" />
+
+            <div class="menu-bottom">
+                <div class="menu-item">
+                    <i class="fas fa-child"></i><a href="#">代辦入會服務</a>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-shopping-cart"></i><a href="#">伐購服務</a>
+                </div>
+                <div class="menu-item">
+                    <i class="fab fa-telegram-plane"></i><a href="#">代寄服務</a>
+                </div>
+            </div>
+            
         </div>
 
         <!-- opacity background when side navbar is presented -->
@@ -75,7 +86,7 @@
 
     <script>
         function openNav() {
-            document.getElementById("myMenu").style.width = "30%";
+            document.getElementById("myMenu").style.width = "200px";
             document.getElementById("myMenuCover").style.display = "block";
         }
 
@@ -86,6 +97,7 @@
         }
     </script>
 
+    
     @RenderSection("Scripts", required: false)
 </body>
 </html>

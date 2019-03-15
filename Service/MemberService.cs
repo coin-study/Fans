@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using fans.Data;
 using fans.EntityModels;
@@ -13,9 +14,10 @@ namespace fans.Service
         {
             _context = context;
         }
-        public Task Create(Member member)
+        public async Task Create(Member member)
         {
-            throw new System.NotImplementedException();
+            _context.Add(member);
+            await _context.SaveChangesAsync();
         }
 
         public Task Delete(int memberId)
@@ -32,7 +34,11 @@ namespace fans.Service
 
         public Member GetById(int memberId)
         {
-            throw new System.NotImplementedException();
+            return _context.Members.Where( member => member.Id == memberId)
+                .Include( member => member.Club)
+                .Include( member => member.User)
+                .First();
+
         }
     }
 }

@@ -8,16 +8,18 @@
 
     @foreach(var club in Model.ClubList)
     {
-        <div class="clubCard" style="background-image: url(../@club.ImageUrl);">
-            <div class="clubCardName">
-                <div class="clubCardEnglishName">
-                    @club.Name
-                </div>
-                <div class="clubCardChineseName">
-                    @club.ChineseName
+        <a asp-controller="Member" asp-action="Register" asp-route-id="@club.Id">
+            <div class="clubCard" style="background-image: url(../@club.ImageUrl);">
+                <div class="clubCardName">
+                    <div class="clubCardEnglishName">
+                        @club.Name
+                    </div>
+                    <div class="clubCardChineseName">
+                        @club.ChineseName
+                    </div>
                 </div>
             </div>
-        </div>
+        </a>
     }
 
 </div>

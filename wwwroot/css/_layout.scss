@@ -32,12 +32,12 @@ body, html {
     padding: $padding-s;
 
     i {
-        color: color(icon);
+        color: color(hover);
     }
 }
 
 .menu {
-    background-color: color(temp);
+    
 }
 
 .content {
@@ -49,6 +49,19 @@ body, html {
     grid-area: f;
     background-color: color(pri);
     padding: $padding;
+}
+
+
+
+////////////////////////////////////////////////////////////////////
+// content //
+.content-bkg {
+    padding: 20px;
+    border-style: none;
+    border-width: 1px;
+    border-radius: $border-radius;
+    border-color: #999;
+    background-color: #f4f4f4;
 }
 
 // header //
@@ -99,19 +112,59 @@ body, html {
     right: 0;
     background-color: color(pri);
     overflow-x: hidden;
-    padding-top: 40px;
     transition: 0.5s;
 
-    a {
-        padding: 8px 8px 8px 20px;
-        text-decoration: none;
-        font-size: 20px;
-        color: color(headline);
-        display: block;
+    .menu-top {
+        height: 50px;
+        width: 100%;
+        padding: $padding;
+        text-align: center;
+        
+        i {
+            color: color(icon);
+        }
+
+        a {
+            display: inline-block;
+            padding: 3px 20px 3px 20px;
+            border-radius: $border-radius;
+            font-size: 16px;
+            color: white;
+            background-color: color(icon);
+        }
+
+        a:hover {
+            text-decoration: none;
+            background-color: color(menuhover);
+        }
+
     }
 
-    a:hover {
-        background-color: color(hover);
+    .menu-bottom {
+        width: 100%;
+
+        .menu-item {
+            width: 100%;
+            padding: $padding;
+            margin-bottom: $margin-s;
+            background-color: color(sec);
+        }
+
+        i {
+            width: 20px;
+            text-align: center;
+            margin-right: $margin-s;
+            color: color(icon);
+        }
+
+        a {
+            color: color(menu);
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: color(menuhover);
+        }
     }
 }
 

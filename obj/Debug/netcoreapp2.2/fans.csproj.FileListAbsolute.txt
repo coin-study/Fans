@@ -66,3 +66,5 @@
 /Users/jackal/Projects/fans/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/_ViewImports.g.cshtml.cs
 /Users/jackal/Projects/fans/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_XLayout.g.cshtml.cs
 /Users/jackal/Projects/fans/obj/Debug/netcoreapp2.2/Razor/Views/Club/index.g.cshtml.cs
+/Users/jackal/Projects/fans/obj/Debug/netcoreapp2.2/Razor/Views/Member/Index.g.cshtml.cs
+/Users/jackal/Projects/fans/obj/Debug/netcoreapp2.2/Razor/Views/Member/Register.g.cshtml.cs

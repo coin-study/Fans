@@ -1,0 +1,97 @@
+@model fans.Models.Member.RegisterMemberModel
+
+<div class="title">
+    <i class="fas fa-address-card"></i>  @Model.ClubName 代辦入會表格
+    <br>
+</div>
+
+<div class="content content-bkg">
+    <form asp-action="RegisterMember" method="post">
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="ChineseLastName">中文姓氏</label>
+                <input asp-for="ChineseLastName" class="form-control" />
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="ChineseFirstName">中文名字</label>
+                <input asp-for="ChineseFirstName" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="EnglishLastName">英文姓氏</label>
+                <input asp-for="EnglishLastName" class="form-control" placeholder="護照上的英文姓氏拼音"/>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="EnglishFirstName">英文名字</label>
+                <input asp-for="EnglishFirstName" class="form-control" placeholder="護照上的英文名字拼音" />
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="Gender">性別</label>
+                <select asp-for="Gender" class="form-control">
+                    <option value="" selected disabled hidden>請選擇</option>
+                    <option value="M">男</option>
+                    <option value="F">女</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="BirthDate">出生日期</label>
+                <input asp-for="BirthDate" type="date" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="Favourite">本命</label>
+                <select asp-for="Favourite" class="form-control">
+                    <option value="" selected disabled hidden>請選擇</option>
+                    <option value="aiba">相葉雅紀</option>
+                    <option value="Matsumoto">松本潤</option>
+                    <option value="Ninomiya">二宮和也</option>
+                    <option value="Ohno">大野智</option>
+                    <option value="Sakurai">櫻井翔</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="Phone">手機號碼</label>
+                <input asp-for="Phone" class="form-control"/>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="Wechat">微信號</label>
+                <input asp-for="Wechat" class="form-control" />
+            </div>
+        </div>    
+
+        <div class="form-row">
+            <div class="form-group col-md-9">
+                <label asp-for="MailingAddress">國內郵寄地址</label>
+                <input asp-for="MailingAddress" class="form-control" />
+            </div>
+        </div>  
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="SharedAddress">你的日本地址要與多少人共用？</label>
+                <select asp-for="SharedAddress" class="form-control">
+                    <option>一個人地址</option>
+                    <option>二個人地址</option>
+                    <option>三個人地址</option>
+                </select>
+            </div>
+        </div> 
+
+        <button type="submit" class="btn-lg btn-primary">遞交</button>
+        <input asp-for="ClubId" type="hidden" />
+    </form>
+</div>
+
+        
