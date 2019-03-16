@@ -70,7 +70,7 @@ namespace fans.Controllers
             var member = BuildMember(model, user);
 
             await _memberService.Create(member);
-            return RedirectToAction("Index", "Member", member.Id);
+            return RedirectToAction("Index", "Member", model.ClubId);
         }
 
         private Member BuildMember(RegisterMemberModel model, ApplicationUser user)
