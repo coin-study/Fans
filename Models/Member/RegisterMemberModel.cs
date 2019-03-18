@@ -7,7 +7,6 @@ namespace fans.Models.Member
         public int ClubId { get; set; }
         public string ClubName { get; set; }
         public string UserName { get; set; }
-
         public string ChineseLastName { get; set; }
         public string ChineseFirstName { get; set; }
         public string EnglishLastName { get; set; }
