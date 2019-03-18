@@ -40,5 +40,6 @@ namespace fans.Service
                 .First();
 
         }
+
     }
 }

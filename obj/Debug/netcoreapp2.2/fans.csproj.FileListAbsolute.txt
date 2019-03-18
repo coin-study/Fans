@@ -68,3 +68,4 @@
 /Users/jackal/Projects/fans/obj/Debug/netcoreapp2.2/Razor/Views/Club/index.g.cshtml.cs
 /Users/jackal/Projects/fans/obj/Debug/netcoreapp2.2/Razor/Views/Member/Index.g.cshtml.cs
 /Users/jackal/Projects/fans/obj/Debug/netcoreapp2.2/Razor/Views/Member/Register.g.cshtml.cs
+/Users/jackal/Projects/fans/obj/Debug/netcoreapp2.2/Razor/Views/Member/Detail.g.cshtml.cs

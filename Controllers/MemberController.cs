@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using fans.EntityModels;
 using fans.Models.Member;
@@ -23,7 +24,37 @@ namespace fans.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Index(int id)
+        public IActionResult Index()
+        {
+            var members = _memberService.GetAll()
+                .Select(m => new MemberViewModel
+                {
+                    Id = m.Id,
+                    ClubId = m.Club.Id,
+                    ClubName = m.Club.Name,
+                    UserName = m.User.UserName,
+                    UserId = m.User.Id,
+                    ChineseLastName = m.ChineseLastName,
+                    ChineseFirstName = m.ChineseFirstName,
+                    EnglishLastName = m.EnglishLastName,
+                    EnglishFirstName = m.EnglishFirstName,
+                    Gender = m.Gender,
+                    BirthDate = m.BirthDate,
+                    Favourite = m.Favourite,
+                    Phone = m.Phone,
+                    Wechat = m.Wechat,
+                    MailingAddress = m.MailingAddress,
+                    SharedAddress = m.SharedAddress
+                });
+
+            var model = new MemberIndexViewModel
+            {
+                Members = members
+            };
+
+            return View(model);
+        }
+        public IActionResult Detail(int id)
         {
             var member = _memberService.GetById(id);
 
@@ -70,7 +101,7 @@ namespace fans.Controllers
             var member = BuildMember(model, user);
 
             await _memberService.Create(member);
-            return RedirectToAction("Index", "Member", model.ClubId);
+            return RedirectToAction("Detail", "Member", new { id = member.Id } );
         }
 
         private Member BuildMember(RegisterMemberModel model, ApplicationUser user)

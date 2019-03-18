@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using fans.EntityModels
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -49,6 +54,16 @@
                 <div class="menu-item">
                     <i class="fab fa-telegram-plane"></i><a href="#">代寄服務</a>
                 </div>
+                @if (SignInManager.IsSignedIn(User))
+                {
+
+                    <div class="menu-item menu-logout">
+                        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                            <button  type="submit"><i class="fas fa-sign-out-alt"></i>登出</button>
+                        </form>
+                    </div>
+
+                }
             </div>
             
         </div>
