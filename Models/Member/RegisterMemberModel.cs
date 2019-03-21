@@ -4,8 +4,10 @@ namespace fans.Models.Member
 {
     public class RegisterMemberModel
     {
+        public int Id { get; set; }
         public int ClubId { get; set; }
         public string ClubName { get; set; }
+        public string UserId { get; set; }
         public string UserName { get; set; }
         public string ChineseLastName { get; set; }
         public string ChineseFirstName { get; set; }

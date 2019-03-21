@@ -58,7 +58,7 @@ namespace fans.Controllers
         {
             var member = _memberService.GetById(id);
 
-            var model = new MemberViewModel
+            var model = new RegisterMemberModel
             {
                 Id = member.Id,
                 ClubId = member.Club.Id,
@@ -104,11 +104,20 @@ namespace fans.Controllers
             return RedirectToAction("Detail", "Member", new { id = member.Id } );
         }
 
+        [HttpPost]
+        public async Task<IActionResult> UpdateMember(int id, RegisterMemberModel model)
+        {
+            var userId = _userManager.GetUserId(User);
+            var user = await _userManager.FindByIdAsync(userId);
+            var member = BuildMember(model, user);
+
+            await _memberService.Update(id, member);
+            return RedirectToAction("Index", "Member");
+        }
         private Member BuildMember(RegisterMemberModel model, ApplicationUser user)
         {
             return new Member
             {
-
                 ChineseLastName = model.ChineseLastName,
                 ChineseFirstName = model.ChineseFirstName,
                 EnglishLastName = model.EnglishLastName,

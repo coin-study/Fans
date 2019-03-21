@@ -19,7 +19,27 @@ namespace fans.Service
             _context.Add(member);
             await _context.SaveChangesAsync();
         }
+        public async Task Update(int id, Member member)
+        {
+            var memberToUpdate = GetById(id);
 
+            memberToUpdate.ChineseLastName = member.ChineseLastName;
+            memberToUpdate.ChineseFirstName = member.ChineseFirstName;
+            memberToUpdate.EnglishLastName = member.EnglishLastName;
+            memberToUpdate.EnglishFirstName = member.EnglishFirstName;
+            memberToUpdate.Gender = member.Gender;
+            memberToUpdate.BirthDate = member.BirthDate;
+            memberToUpdate.Favourite = member.Favourite;
+            memberToUpdate.Phone = member.Phone;
+            memberToUpdate.Wechat = member.Wechat;
+            memberToUpdate.MailingAddress = member.MailingAddress;
+            memberToUpdate.SharedAddress = member.SharedAddress;
+            memberToUpdate.User = member.User;
+            memberToUpdate.Club = member.Club;
+
+            _context.Update(memberToUpdate);
+            await _context.SaveChangesAsync();
+        }
         public Task Delete(int memberId)
         {
             throw new System.NotImplementedException();

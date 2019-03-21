@@ -14,6 +14,7 @@ namespace fans.Data
 
         public DbSet<Club> Clubs { get; set; }
         public DbSet<Member> Members { get; set; }
+        public DbSet<Idol> Idols { get; set; }
 
     }
 }

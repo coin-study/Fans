@@ -8,8 +8,18 @@
     <table class="table table-hover" id="userIndexTable">
             <thead>
                 <tr>
-                    <th>偶像</th>
+                    <th>團體</th>
                     <th>會員</th>
+                    <th>姓</th>
+                    <th>名</th>
+                    <th>姓</th>
+                    <th>名</th>
+                    <th>性別</th>
+                    <th>生日</th>
+                    <th>本命</th>
+                    <th>電話</th>
+                    <th>微信</th>
+                    <th>郵寄地址</th>
                     <th>選擇地址</th>
                 </tr>
             </thead>
@@ -23,8 +33,40 @@
                             @member.UserName
                         </td>
                         <td>
+                            @member.ChineseLastName
+                        </td>
+                        <td>
+                            @member.ChineseFirstName
+                        </td>
+                        <td>
+                            @member.EnglishLastName
+                        </td>
+                        <td>
+                            @member.EnglishFirstName
+                        </td>
+                        <td>
+                            @member.Gender
+                        </td>
+                        <td>
+                            @member.BirthDate
+                        </td>
+                        <td>
+                            @member.Favourite
+                        </td>
+                        <td>
+                            @member.Phone
+                        </td>
+                        <td>
+                            @member.Wechat
+                        </td>
+                        <td>
+                            @member.MailingAddress
+                        </td>
+                        <td>
                             @member.SharedAddress
                         </td>
+
+
                     </tr>
                 }
             </tbody>

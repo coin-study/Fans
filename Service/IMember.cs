@@ -10,6 +10,7 @@ namespace fans.Service
         IEnumerable<Member> GetAll();
 
         Task Create(Member member);
+        Task Update(int id, Member member);
         Task Delete(int memberId);
     }
 }
