@@ -11,5 +11,6 @@ namespace fans.EntityModels
         public string ImageUrl { get; set; }
 
         public virtual IEnumerable<Member> Members { get; set; }
+        public virtual IEnumerable<Idol> Idols { get; set; }
     }
 }

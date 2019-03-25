@@ -1,4 +1,5 @@
 using System;
+using fans.EntityModels;
 
 namespace fans.Models.Member
 {
@@ -15,7 +16,7 @@ namespace fans.Models.Member
         public string EnglishFirstName { get; set; }
         public string Gender { get; set; }
         public DateTime BirthDate { get; set; }
-        public string Favourite { get; set; }
+        public Idol Favourite { get; set; }
         public string Phone { get; set; }
         public string Wechat { get; set; }
         public string MailingAddress { get; set; }

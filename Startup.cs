@@ -48,6 +48,7 @@ namespace fans
             
             services.AddScoped<IClub, ClubService>();
             services.AddScoped<IMember, MemberService>();
+            services.AddScoped<IIdol, IdolService>();
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
