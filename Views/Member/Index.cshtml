@@ -5,16 +5,17 @@
 </div>
 
 <div class="content content-bkg">
-    <table class="table table-hover" id="userIndexTable">
+    <table class="table table-hover table-sm" id="userIndexTable">
         <thead>
             <tr>
-                <th>Member</th>
+                <th>#</th>
                 <th>User</th>
                 <th>Club</th>
                 <th>|</th>
                 <th>Paid</th>
                 <th>Mailed</th>
                 <th>Renew</th>
+                <th>Register</th>
             </tr>
         </thead>
         <tbody>
@@ -22,7 +23,9 @@
             {
                 <tr class="userRow">
                     <td>
-                        @member.Id
+                        <a asp-controller="Member" asp-action="Detail" asp-route-id="@member.Id">
+                            @member.Id
+                        </a>
                     </td>
                     <td>
                         @member.UserName
@@ -41,6 +44,9 @@
                     </td>
                     <td>
                         F
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm btn-block">Go</button>
                     </td>
                 </tr>
             }
