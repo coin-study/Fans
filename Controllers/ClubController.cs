@@ -30,5 +30,6 @@ namespace fans.Controllers
 
             return View(model);
         }
+
     }
 }

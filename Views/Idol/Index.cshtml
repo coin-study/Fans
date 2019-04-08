@@ -1,0 +1,34 @@
+@model fans.Models.Idol.IdolIndexViewModel
+
+<div class="title">
+    <i class="fas fa-child"></i> all idols
+</div>
+
+<div class="content">
+
+    <table class="table table-hover" id="userIndexTable">
+        <thead>
+            <tr>
+                <th>團體</th>
+                <th>Name</th>
+                <th>English Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var Idol in Model.IdolList)
+            {
+                <tr class="userRow">
+                    <td>
+                        @Idol.ClubId
+                    </td>
+                    <td>
+                        @Idol.Name
+                    </td>
+                    <td>
+                        @Idol.EnglishName
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

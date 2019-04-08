@@ -49,7 +49,8 @@ namespace fans.Service
         {
             return _context.Members
                 .Include( member => member.Club)
-                .Include( member => member.User);
+                .Include( member => member.User)
+                .Include( member => member.Favourite);
         }
 
         public Member GetById(int memberId)
@@ -57,7 +58,8 @@ namespace fans.Service
             return _context.Members.Where( member => member.Id == memberId)
                 .Include( member => member.Club)
                 .Include( member => member.User)
-                .First();
+                .Include( member => member.Favourite)
+                .FirstOrDefault();
 
         }
 

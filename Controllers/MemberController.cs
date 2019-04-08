@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using fans.EntityModels;
+using fans.Models.Idol;
 using fans.Models.Member;
 using fans.Service;
 using Microsoft.AspNetCore.Identity;
@@ -13,13 +14,16 @@ namespace fans.Controllers
     {
         private readonly IMember _memberService;
         private readonly IClub _clubService;
+        private readonly IIdol _idolService;
         private static UserManager<ApplicationUser> _userManager;
         public MemberController(
             IMember memberService, 
             IClub clubService,
+            IIdol idolService,
             UserManager<ApplicationUser> userManager)
         {
             _clubService = clubService;
+            _idolService = idolService;
             _memberService = memberService;
             _userManager = userManager;
         }
@@ -40,7 +44,8 @@ namespace fans.Controllers
                     EnglishFirstName = m.EnglishFirstName,
                     Gender = m.Gender,
                     BirthDate = m.BirthDate,
-                    Favourite = m.Favourite,
+                    FavouriteId = m.Favourite.Id,
+                    FavouriteName = m.Favourite.Name,
                     Phone = m.Phone,
                     Wechat = m.Wechat,
                     MailingAddress = m.MailingAddress,
@@ -57,6 +62,14 @@ namespace fans.Controllers
         public IActionResult Detail(int id)
         {
             var member = _memberService.GetById(id);
+            var idolList = _idolService.GetAllByClub(member.Club)
+                .Select( idol => new IdolViewModel 
+                {
+                    Id = idol.Id,
+                    Name = idol.Name,
+                    EnglishName = idol.EnglishName,
+                    ClubId = idol.ClubId
+                });
 
             var model = new RegisterMemberModel
             {
@@ -69,11 +82,13 @@ namespace fans.Controllers
                 EnglishFirstName = member.EnglishFirstName,
                 Gender = member.Gender,
                 BirthDate = member.BirthDate,
+                FavouriteId = member.Favourite.Id,
                 Favourite = member.Favourite,
                 Phone = member.Phone,
                 Wechat = member.Wechat,
                 MailingAddress = member.MailingAddress,
-                SharedAddress = member.SharedAddress
+                SharedAddress = member.SharedAddress,
+                IdolList = idolList
             };
 
             return View(model);
@@ -82,12 +97,21 @@ namespace fans.Controllers
         public IActionResult Register(int id)
         {
             var club = _clubService.GetById(id);
+            var idolList = _idolService.GetAllByClub(club)
+                .Select( idol => new IdolViewModel 
+                {
+                    Id = idol.Id,
+                    Name = idol.Name,
+                    EnglishName = idol.EnglishName,
+                    ClubId = idol.ClubId
+                });
 
             var model = new RegisterMemberModel
             {
                 ClubId = club.Id,
                 ClubName = club.Name,
-                UserName = User.Identity.Name
+                UserName = User.Identity.Name,
+                IdolList = idolList
             };
 
             return View(model);
@@ -101,13 +125,15 @@ namespace fans.Controllers
             var member = BuildMember(model, user);
 
             await _memberService.Create(member);
-            return RedirectToAction("Detail", "Member", new { id = member.Id } );
+           // return RedirectToAction("Detail", "Member", new { id = member.Id } );
+            return RedirectToAction("Index", "Member");
+
         }
 
         [HttpPost]
         public async Task<IActionResult> UpdateMember(int id, RegisterMemberModel model)
         {
-            var userId = _userManager.GetUserId(User);
+            var userId = model.UserId;
             var user = await _userManager.FindByIdAsync(userId);
             var member = BuildMember(model, user);
 
@@ -124,7 +150,7 @@ namespace fans.Controllers
                 EnglishFirstName = model.EnglishFirstName,
                 Gender = model.Gender,
                 BirthDate = model.BirthDate,
-                Favourite = model.Favourite,
+                Favourite = _idolService.GetById(model.FavouriteId),
                 Phone = model.Phone,
                 Wechat = model.Wechat,
                 MailingAddress = model.MailingAddress,

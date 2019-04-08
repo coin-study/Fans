@@ -55,14 +55,12 @@
 
             <div class="form-row">
                 <div class="form-group col-md-3">
-                    <label asp-for="Favourite">本命</label>
-                    <select asp-for="Favourite" class="form-control" required>
+                    <label asp-for="FavouriteId">本命</label>
+                    <select asp-for="FavouriteId" class="form-control" required>
                         <option value="" selected disabled hidden>請選擇</option>
-                        <option value="aiba">相葉雅紀</option>
-                        <option value="Matsumoto">松本潤</option>
-                        <option value="Ninomiya">二宮和也</option>
-                        <option value="Ohno">大野智</option>
-                        <option value="Sakurai">櫻井翔</option>
+                        @foreach(var idol in Model.IdolList){
+                            <option value="@idol.Id">@idol.Name</option>
+                        }
                     </select>
                 </div>
             </div>
@@ -98,6 +96,7 @@
             
             <button type="submit" class="btn-lg btn-primary">更新</button>
             <input asp-for="ClubId" type="hidden" />
+            <input asp-for="UserId" type="hidden" />
             <input asp-for="Id" type="hidden" />
         </form>
     </div>

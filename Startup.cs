@@ -54,7 +54,12 @@ namespace fans
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(
+            IApplicationBuilder app, 
+            IHostingEnvironment env,
+            ApplicationDbContext context,
+            RoleManager<ApplicationRole> roleManager,
+            UserManager<ApplicationUser> userManager)
         {
             if (env.IsDevelopment())
             {
@@ -81,7 +86,7 @@ namespace fans
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            //DummyData.Initialize(context, userManager, roleManager).Wait();// seed here
+            DummyData.Initialize(context, userManager, roleManager).Wait();// seed here
         }
     }
 }
