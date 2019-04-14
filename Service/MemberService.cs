@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -60,8 +61,23 @@ namespace fans.Service
                 .Include( member => member.User)
                 .Include( member => member.Favourite)
                 .FirstOrDefault();
-
         }
 
+        public async Task UpdateStepOne(int id, string url)
+        {
+            var member = GetById(id);
+
+            if (member.StepOne == null)
+            {
+                member.StepOne = url;
+
+                _context.Update(member);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception();
+            }
+        }
     }
 }

@@ -59,7 +59,7 @@ namespace fans.Controllers
 
             return View(model);
         }
-        public IActionResult Detail(int id)
+        public IActionResult Detail(int id) // member's id
         {
             var member = _memberService.GetById(id);
             var idolList = _idolService.GetAllByClub(member.Club)
@@ -94,7 +94,7 @@ namespace fans.Controllers
             return View(model);
         }
 
-        public IActionResult Register(int id)
+        public IActionResult Register(int id) // club's id
         {
             var club = _clubService.GetById(id);
             var idolList = _idolService.GetAllByClub(club)
@@ -128,6 +128,16 @@ namespace fans.Controllers
            // return RedirectToAction("Detail", "Member", new { id = member.Id } );
             return RedirectToAction("Index", "Member");
 
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RegisterStepOne(int id)
+        {
+            var member = _memberService.GetById(id);
+
+            await ClubRegister.RegisterArashi(member);
+
+            return RedirectToAction("Index", "Member");
         }
 
         [HttpPost]

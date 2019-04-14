@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using fans.Data;
 
 namespace fans.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190414102448_Add_StepTwo_To_Member")]
+    partial class Add_StepTwo_To_Member
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -255,8 +257,6 @@ namespace fans.Data.Migrations
                     b.Property<int>("SharedAddress");
 
                     b.Property<string>("StepOne");
-
-                    b.Property<string>("StepTwo");
 
                     b.Property<string>("UserId");
 

@@ -16,6 +16,8 @@ namespace fans.EntityModels
         public string Wechat { get; set; }
         public string MailingAddress { get; set; }
         public int SharedAddress { get; set; }
+        public string StepOne { get; set; }
+        public string StepTwo { get; set; }
 
         public virtual Club Club { get; set; }
         public virtual ApplicationUser User { get; set; }
