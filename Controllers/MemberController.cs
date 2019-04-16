@@ -49,7 +49,8 @@ namespace fans.Controllers
                     Phone = m.Phone,
                     Wechat = m.Wechat,
                     MailingAddress = m.MailingAddress,
-                    SharedAddress = m.SharedAddress
+                    SharedAddress = m.SharedAddress,
+                    RegisterLink = m.RegisterLink
                 });
 
             var model = new MemberIndexViewModel
@@ -130,12 +131,53 @@ namespace fans.Controllers
 
         }
 
+        public IActionResult RegisterLink(int id) // member's id
+        {
+            var member = _memberService.GetById(id);
+
+            var model = new RegisterLinkModel
+            {
+                ClubId = member.Club.Id,
+                ClubName = member.Club.ChineseName,
+                MemberId = member.Id
+            };
+
+            return View(model);
+        }
+
         [HttpPost]
+        public async Task<IActionResult> UpdateRegisterLink(RegisterLinkModel model)
+        {
+            await _memberService.UpdateRegisterLink(model.MemberId, model.RegisterLink);
+
+            return RedirectToAction("Index", "Member");
+        }
         public async Task<IActionResult> RegisterStepOne(int id)
         {
             var member = _memberService.GetById(id);
 
-            await ClubRegister.RegisterArashi(member);
+            if (member.Club.Id == 1) 
+            {
+                await ClubRegister.RegisterArashi_One(member);
+            }
+            else if (member.Club.Id == 2)
+            {
+
+            }
+            else if (member.Club.Id == 3)
+            {
+                await ClubRegister.RegisterBTS_One(member);
+            }
+            
+
+            return RedirectToAction("Index", "Member");
+        }
+
+        public async Task<IActionResult> RegisterStepTwo(int id)
+        {
+            var member = _memberService.GetById(id);
+
+            await ClubRegister.RegisterArashi_Two(member);
 
             return RedirectToAction("Index", "Member");
         }

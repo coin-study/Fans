@@ -22,5 +22,6 @@ namespace fans.Models.Member
         public string Wechat { get; set; }
         public string MailingAddress { get; set; }
         public int SharedAddress { get; set; }
+        public string RegisterLink { get; set; }
     }
 }

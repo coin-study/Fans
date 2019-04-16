@@ -63,13 +63,13 @@ namespace fans.Service
                 .FirstOrDefault();
         }
 
-        public async Task UpdateStepOne(int id, string url)
+        public async Task UpdateRegisterLink(int id, string url)
         {
             var member = GetById(id);
 
-            if (member.StepOne == null)
+            if (member.RegisterLink == null)
             {
-                member.StepOne = url;
+                member.RegisterLink = url;
 
                 _context.Update(member);
                 await _context.SaveChangesAsync();
@@ -79,5 +79,6 @@ namespace fans.Service
                 throw new Exception();
             }
         }
+
     }
 }

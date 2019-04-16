@@ -1,0 +1,45 @@
+@using Microsoft.AspNetCore.Identity
+@using fans.EntityModels
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@model fans.Models.Member.RegisterLinkModel
+
+<div class="title">
+    <i class="fas fa-address-card"></i>  代辦入會 | 輸入登記網址
+</div>
+
+@if (SignInManager.IsSignedIn(User))
+{
+
+    <div class="content content-bkg">
+
+        <form asp-action="UpdateRegisterLink" method="post">
+            
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label asp-for="RegisterLink">登記網址</label>
+                    <input asp-for="RegisterLink" class="form-control" required />
+                </div>
+            </div>
+
+            <button type="submit" class="btn-lg btn-primary">遞交</button>
+            <input asp-for="MemberId" type="hidden" />
+        </form>
+
+    </div>
+}
+else
+{
+    <div class="content content-bkg">
+        <h3>
+            <i class="fas fa-grin-wink"></i> 請先 
+            <a class="menu-button" asp-area="Identity" asp-page="/Account/Login">登入</a> 
+            或
+            <a class="menu-button" asp-area="Identity" asp-page="/Account/Register">註冊</a> 
+            成為會員。
+        </h3>
+
+    </div>
+
+}

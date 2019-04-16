@@ -12,6 +12,6 @@ namespace fans.Service
         Task Create(Member member);
         Task Update(int id, Member member);
         Task Delete(int memberId);
-        Task UpdateStepOne(int id, string url);
+        Task UpdateRegisterLink(int id, string url);
     }
 }

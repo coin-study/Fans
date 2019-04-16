@@ -12,9 +12,10 @@
                 <th>User</th>
                 <th>Club</th>
                 <th>|</th>
-                <th>Paid</th>
-                <th>Mailed</th>
+                <th>Reg email</th>
+                <th>Fill info</th>
                 <th>Renew</th>
+                <th>Register</th>
                 <th>Register</th>
             </tr>
         </thead>
@@ -37,6 +38,19 @@
                         |
                     </td>
                     <td>
+                        <a asp-controller="Member" asp-action="RegisterStepOne" asp-route-id="@member.Id">go</a> 
+                    </td>
+                    <td>
+                        @if (@member.RegisterLink == null)
+                        {
+                            <a>N/A</a>
+                        }
+                        else
+                        {
+                        <a asp-controller="Member" asp-action="RegisterStepTwo" asp-route-id="@member.Id">go</a> 
+                        }
+                    </td>
+                    <td>
                         T
                     </td>
                     <td>
@@ -44,9 +58,6 @@
                     </td>
                     <td>
                         F
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-primary btn-sm btn-block">Go</button>
                     </td>
                 </tr>
             }
