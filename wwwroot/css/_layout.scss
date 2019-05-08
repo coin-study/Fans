@@ -85,19 +85,19 @@ body, html {
         width: 200px;
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: baseline;
     
         .logo-left {
-            height: 30px;
-            width: 30px;
+            height: 27px;
+            width: 27px;
             background-image: url(../images/Onigiri.png);
             background-repeat: no-repeat;
             background-size: 100% 100%;
         }
 
         .logo-right {
-            height: 20px;
-            width: 80px;
+            height: 30px;
+            width: 100px;
             background-image: url(../images/logo-word.png);
             background-repeat: no-repeat;
             background-size: 100% 100%;
@@ -107,6 +107,7 @@ body, html {
 
     .bars {
         text-decoration: none;
+        color: color(temp);
         cursor: pointer;
     }
 }
@@ -114,4 +115,5 @@ body, html {
 // footer //
 .footer {
     font-size: 14px;
+    color: color(temp);
 }

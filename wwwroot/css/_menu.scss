@@ -50,18 +50,18 @@
             width: 100%;
             padding: $padding;
             margin-bottom: $margin-s;
-            background-color: color(sec);
+            background-color: color(pri);
         }
 
         i {
             width: 20px;
             text-align: center;
             margin-right: $margin-s;
-            color: color(icon);
+            color: color(sec);
         }
 
         a {
-            color: color(menu);
+            color: color(temp);
         }
 
         a:hover {
@@ -70,7 +70,7 @@
         }
 
         .menu-logout {
-            background-color: color(hover);
+            background-color: color(sec);
         }
 
         .menu-logout:hover {
@@ -83,12 +83,12 @@
             border: none;
             padding: 0;
             margin: 0;
-            color: #f6e58d;
+            color: color(temp);
             cursor: pointer;
             width: 100%;
 
             i {
-                color: #f6e58d;
+                color: color(temp);
             }
         }
     }

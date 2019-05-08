@@ -9,6 +9,8 @@ namespace fans.EntityModels
         public string ChineseFirstName { get; set; }
         public string EnglishLastName { get; set; }
         public string EnglishFirstName { get; set; }
+        public string KatakanaLastName { get; set; }
+        public string KatakanaFirstName { get; set; }
         public string Gender { get; set; }
         public DateTime BirthDate { get; set; }
         public Idol Favourite { get; set; }
