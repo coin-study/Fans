@@ -80,5 +80,24 @@ namespace fans.Service
             }
         }
 
+        public async Task UpdateKatakanaFirstName(int id, string name)
+        {
+            var member = GetById(id);
+
+            member.KatakanaFirstName = name;
+
+            _context.Update(member);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateKatakanaLastName(int id, string name)
+        {
+            var member = GetById(id);
+
+            member.KatakanaLastName = name;
+
+            _context.Update(member);
+            await _context.SaveChangesAsync();
+        }
     }
 }

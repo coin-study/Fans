@@ -13,5 +13,7 @@ namespace fans.Service
         Task Update(int id, Member member);
         Task Delete(int memberId);
         Task UpdateRegisterLink(int id, string url);
+        Task UpdateKatakanaFirstName(int id, string name);
+        Task UpdateKatakanaLastName(int id, string name);
     }
 }
