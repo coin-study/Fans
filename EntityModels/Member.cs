@@ -23,6 +23,7 @@ namespace fans.EntityModels
 
         public virtual Club Club { get; set; }
         public virtual ApplicationUser User { get; set; }
+        public virtual PaymentDetail Payment { get; set; }
         
     }
 }

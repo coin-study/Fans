@@ -42,6 +42,7 @@ namespace fans
 
                 string lastName = resultLN.Text;
                 lastName = Regex.Replace(lastName, @"\(.*\)", "");
+                lastName = lastName.Replace(" ", String.Empty);
 
                 memberService.UpdateKatakanaLastName(member.Id, lastName);
             
@@ -66,6 +67,8 @@ namespace fans
 
                 string firstName = resultFN.Text;
                 firstName = Regex.Replace(firstName, @"\(.*\)", "");
+                firstName = firstName.Replace(" ", String.Empty);
+
 
                 memberService.UpdateKatakanaFirstName(member.Id, firstName);
 

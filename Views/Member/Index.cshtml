@@ -51,7 +51,11 @@
                         {
                             @if (@member.ClubId == 1)
                             {
-                                <a asp-controller="Member" asp-action="RegisterStepOne" asp-route-id="@member.Id">reg email</a>
+                                @if (@member.RegisterLink == null)
+                                {
+                                    <a asp-controller="Member" asp-action="RegisterStepOne" asp-route-id="@member.Id">reg email</a>
+                                }
+                                else { <p>reged</p> }
                             }
                             else if (@member.ClubId == 3)
                             {

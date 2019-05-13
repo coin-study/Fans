@@ -192,7 +192,7 @@ namespace fans.Controllers
         {
             var member = _memberService.GetById(id);
 
-            await ClubRegister.RegisterArashi_Two(member);
+            await RegisterArashi.FillInfo(member);
 
             return RedirectToAction("Index", "Member");
         }
