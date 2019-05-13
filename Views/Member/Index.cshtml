@@ -12,11 +12,10 @@
                 <th>User</th>
                 <th>Club</th>
                 <th>|</th>
-                <th>Reg email</th>
-                <th>Fill info</th>
-                <th>Renew</th>
-                <th>Register</th>
-                <th>Register</th>
+                <th>Katakana</th>
+                <th>Step1</th>
+                <th>Step2</th>
+
             </tr>
         </thead>
         <tbody>
@@ -38,27 +37,54 @@
                         |
                     </td>
                     <td>
-                        <a asp-controller="Member" asp-action="RegisterStepOne" asp-route-id="@member.Id">go</a> 
-                    </td>
-                    <td>
-                        @if (@member.RegisterLink == null)
+                        @if (@member.KatakanaLastName == null || @member.KatakanaFirstName == null)
                         {
-                            <a>N/A</a>
+                            <a asp-controller="Member" asp-action="ConvertKatakana" asp-route-id="@member.Id">convert</a> 
                         }
                         else
                         {
-                        <a asp-controller="Member" asp-action="RegisterStepTwo" asp-route-id="@member.Id">go</a> 
+                            <p>converted</p>
                         }
                     </td>
                     <td>
-                        T
+                        @if (@member.KatakanaLastName != null && @member.KatakanaFirstName != null)
+                        {
+                            @if (@member.ClubId == 1)
+                            {
+                                <a asp-controller="Member" asp-action="RegisterStepOne" asp-route-id="@member.Id">reg email</a>
+                            }
+                            else if (@member.ClubId == 3)
+                            {
+                                <a asp-controller="Member" asp-action="RegisterStepOne" asp-route-id="@member.Id">fill info</a>
+                            }
+                        }
+                        else
+                        {
+                            <p>N/A</p>
+                        }
+
                     </td>
                     <td>
-                        F
+                        @if (@member.ClubId == 1)
+                        {
+                            @if (@member.RegisterLink == null)
+                            {
+                                <p>N/A</p>
+                            }
+                            else
+                            {
+                                <a asp-controller="Member" asp-action="RegisterStepTwo" asp-route-id="@member.Id">fill info</a> 
+                            }
+                        }
+                        else if (@member.ClubId == 2)
+                        {
+                            <p>coming</p>
+                          //<a asp-controller="Member" asp-action="RegisterStepOne" asp-route-id="@member.Id">fill info</a>
+                        }
+
+
                     </td>
-                    <td>
-                        F
-                    </td>
+
                 </tr>
             }
         </tbody>

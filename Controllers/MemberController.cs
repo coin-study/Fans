@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using fans.Data;
 using fans.EntityModels;
 using fans.Models.Idol;
 using fans.Models.Member;
@@ -15,15 +16,18 @@ namespace fans.Controllers
         private readonly IMember _memberService;
         private readonly IClub _clubService;
         private readonly IIdol _idolService;
+        private readonly ApplicationDbContext _context;
         private static UserManager<ApplicationUser> _userManager;
         public MemberController(
             IMember memberService, 
             IClub clubService,
             IIdol idolService,
+            ApplicationDbContext context,
             UserManager<ApplicationUser> userManager)
         {
             _clubService = clubService;
             _idolService = idolService;
+            _context = context;
             _memberService = memberService;
             _userManager = userManager;
         }
@@ -42,6 +46,8 @@ namespace fans.Controllers
                     ChineseFirstName = m.ChineseFirstName,
                     EnglishLastName = m.EnglishLastName,
                     EnglishFirstName = m.EnglishFirstName,
+                    KatakanaLastName = m.KatakanaLastName,
+                    KatakanaFirstName = m.KatakanaFirstName,
                     Gender = m.Gender,
                     BirthDate = m.BirthDate,
                     FavouriteId = m.Favourite.Id,
@@ -152,6 +158,15 @@ namespace fans.Controllers
 
             return RedirectToAction("Index", "Member");
         }
+
+        public async Task<IActionResult> ConvertKatakana(int id)
+        {
+            var member = _memberService.GetById(id);
+            await KatakanaConverter.Convert(_context, _memberService, member);
+
+            return RedirectToAction("Index", "Member");
+        }
+
         public async Task<IActionResult> RegisterStepOne(int id)
         {
             var member = _memberService.GetById(id);
