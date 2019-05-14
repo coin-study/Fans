@@ -51,6 +51,7 @@ namespace fans.Service
             return _context.Members
                 .Include( member => member.Club)
                 .Include( member => member.User)
+                .Include( member => member.Payment)
                 .Include( member => member.Favourite);
         }
 
@@ -59,6 +60,7 @@ namespace fans.Service
             return _context.Members.Where( member => member.Id == memberId)
                 .Include( member => member.Club)
                 .Include( member => member.User)
+                .Include( member => member.Payment)
                 .Include( member => member.Favourite)
                 .FirstOrDefault();
         }

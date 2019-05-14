@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
+using fans.Data;
 using fans.EntityModels;
+using fans.Service;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
@@ -34,13 +36,17 @@ namespace fans
 
         }
 
-        public static Task FillInfo(Member member)
+        public static async Task FillInfo(
+            ApplicationDbContext context,
+            IPayment paymentService,
+            Member member)
         {
 
             IWebDriver driver = new FirefoxDriver(Environment.CurrentDirectory);
 
             driver.Url = member.RegisterLink; 
 
+            // **********FILL IN INFO*************
             WebDriverWait waitFillInfo = new WebDriverWait(driver, TimeSpan.FromMinutes(1));
             waitFillInfo.Until(c => c.FindElement(By.XPath("//*[@id='main']/div[2]/section/form/div[2]/div/button")));
 
@@ -106,29 +112,28 @@ namespace fans
                 sexSelect.SelectByIndex(1);
             }
             // 6 大野智 7 櫻井翔 8 相葉 9 二宮 10 松本
-            if (member.Favourite.Id == 6) {
+            if (member.Favourite.Name == "大野智") {
                 favourite4Radio.Click();
             }
-            if (member.Favourite.Id == 7) {
+            if (member.Favourite.Name == "櫻并翔") {
                 favourite5Radio.Click();
             }
-            if (member.Favourite.Id == 8) {
+            if (member.Favourite.Name == "相葉雅紀") {
                 favourite1Radio.Click();
             }
-            if (member.Favourite.Id == 9) {
+            if (member.Favourite.Name == "二宮和也") {
                 favourite3Radio.Click();
             }
-            if (member.Favourite.Id == 10) {
+            if (member.Favourite.Name == "松本潤") {
                 favourite2Radio.Click();
             }
             
             password1Text.SendKeys("PPass12345word");
             password2Text.SendKeys("PPass12345word");
             
-
             submitButton.Submit();
 
-
+            // **********CONFIRM INFO*************
             WebDriverWait waitConfirm = new WebDriverWait(driver, TimeSpan.FromMinutes(1));
             waitConfirm.Until(c => c.FindElement(By.ClassName("checkbox")));
 
@@ -138,14 +143,33 @@ namespace fans
             IWebElement confirmButton = driver.FindElement(By.XPath("/html/body/div/main/div[2]/section/form/div[2]/div[3]/button"));
             confirmButton.Click();
 
-            if (member == null)
+            // **********CREATE PAYMENT*************
+            WebDriverWait waitPayment = new WebDriverWait(driver, TimeSpan.FromMinutes(1));
+            waitPayment.Until(c => c.FindElement(By.XPath("/html/body/div/main/div[2]/section/div/div[4]/div[6]/div/p")));
+
+            IWebElement limitLabel = driver.FindElement(By.XPath("/html/body/div/main/div[2]/section/div/div[4]/div[2]/div/p"));
+            IWebElement amountLabel = driver.FindElement(By.XPath("/html/body/div/main/div[2]/section/div/div[4]/div[3]/div/p"));
+            IWebElement bankLabel = driver.FindElement(By.XPath("/html/body/div/main/div[2]/section/div/div[4]/div[4]/div/p"));
+            IWebElement customerLabel = driver.FindElement(By.Id("payeasyCustId"));
+            IWebElement confirmLabel = driver.FindElement(By.XPath("/html/body/div/main/div[2]/section/div/div[4]/div[6]/div/p"));
+            
+            var newPayment = new Payment
             {
-                // this part of code will return from the method with an exception
-                throw new ArgumentNullException("member");
-            }
+                Limit = limitLabel.Text,
+                Amount = amountLabel.Text,
+                PaymentBank = bankLabel.Text,
+                PaymentCustomer = customerLabel.Text,
+                PaymentConfirm = confirmLabel.Text,
+                Paid = false,
+                MemberId = member.Id,
+                Member = member
+            };
+
+            await paymentService.Create(newPayment);
+            driver.Close();
 
             // but this part of code is also expected to return something
-            return Task.Run(() => { Console.WriteLine("Hello Task library!"); });
+           // return Task.Run(() => { Console.WriteLine("Hello Task library!"); });
 
         }
 

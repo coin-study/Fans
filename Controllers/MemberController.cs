@@ -16,17 +16,20 @@ namespace fans.Controllers
         private readonly IMember _memberService;
         private readonly IClub _clubService;
         private readonly IIdol _idolService;
+        private readonly IPayment _paymentService;
         private readonly ApplicationDbContext _context;
         private static UserManager<ApplicationUser> _userManager;
         public MemberController(
             IMember memberService, 
             IClub clubService,
             IIdol idolService,
+            IPayment paymentService,
             ApplicationDbContext context,
             UserManager<ApplicationUser> userManager)
         {
             _clubService = clubService;
             _idolService = idolService;
+            _paymentService = paymentService;
             _context = context;
             _memberService = memberService;
             _userManager = userManager;
@@ -42,6 +45,7 @@ namespace fans.Controllers
                     ClubName = m.Club.Name,
                     UserName = m.User.UserName,
                     UserId = m.User.Id,
+                    PaymentId = _paymentService.GetPaymentIdByMemberId(m.Id),
                     ChineseLastName = m.ChineseLastName,
                     ChineseFirstName = m.ChineseFirstName,
                     EnglishLastName = m.EnglishLastName,
@@ -192,7 +196,7 @@ namespace fans.Controllers
         {
             var member = _memberService.GetById(id);
 
-            await RegisterArashi.FillInfo(member);
+            await RegisterArashi.FillInfo(_context, _paymentService, member);
 
             return RedirectToAction("Index", "Member");
         }
@@ -223,7 +227,7 @@ namespace fans.Controllers
                 MailingAddress = model.MailingAddress,
                 SharedAddress = model.SharedAddress,
                 User = user,
-                Club = _clubService.GetById(model.ClubId)
+                Club = _clubService.GetById(model.ClubId),
             };
         }
     }

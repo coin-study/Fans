@@ -10,6 +10,7 @@ namespace fans.Models.Member
         public string ClubName { get; set; }
         public string UserId { get; set; }
         public string UserName { get; set; }
+        public int PaymentId { get; set; }
         public string ChineseLastName { get; set; }
         public string ChineseFirstName { get; set; }
         public string EnglishLastName { get; set; }

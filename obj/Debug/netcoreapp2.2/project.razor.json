@@ -2789,6 +2789,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Payment/Index.cshtml",
+      "TargetPath": "Views/Payment/Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml",
       "TargetPath": "Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml",
       "FileKind": "mvc"
