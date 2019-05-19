@@ -30,7 +30,7 @@ body, html {
     font-weight: bold;
     height: 100%;
     width: 80%;
-    min-width: 400px;
+    min-width: 320px;
     max-width: 1000px;
     margin: 0 auto;
     padding: $padding;
@@ -40,18 +40,14 @@ body, html {
     }
 }
 
-.menu {
-    
-}
-
 .content {
     grid-area: c;
     height: 100%;
     width: 80%;
-    min-width: 400px;
+    min-width: 320px;
     max-width: 1000px;
     margin: 0 auto;
-    padding: $padding;
+    padding: 0;
 }
 
 .footer {
@@ -60,10 +56,9 @@ body, html {
     padding: $padding;
 }
 
-
-
 ////////////////////////////////////////////////////////////////////
 // content //
+
 .content-bkg {
     padding: 20px;
     border-style: none;

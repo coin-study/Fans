@@ -35,7 +35,7 @@ body, html {
   font-weight: bold;
   height: 100%;
   width: 80%;
-  min-width: 400px;
+  min-width: 320px;
   max-width: 1000px;
   margin: 0 auto;
   padding: 10px;
@@ -52,10 +52,10 @@ body, html {
   grid-area: c;
   height: 100%;
   width: 80%;
-  min-width: 400px;
+  min-width: 320px;
   max-width: 1000px;
   margin: 0 auto;
-  padding: 10px;
+  padding: 0;
 }
 
 .footer {
@@ -150,12 +150,14 @@ body, html {
   height: 160px;
   max-width: 550px;
   cursor: pointer;
+  text-decoration: none;
   border-radius: 5px;
   -webkit-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
           box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
 }
 
 .clubCard:hover {
+  text-decoration: none;
   -webkit-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.8);
           box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.8);
 }
@@ -273,5 +275,82 @@ body, html {
   top: 0;
   left: 0;
   display: none;
+}
+
+.content-wrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[12];
+      grid-template-columns: repeat(12, 1fr);
+  -ms-grid-rows: 150px auto;
+      grid-template-rows: 150px auto;
+      grid-template-areas: "cs cs cs cs cs cs cs cs cs cs cs cs" "cm cm cm cm cm cm cm cm cm cm cm cm";
+}
+
+.content-wrapper .content-slideshow {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 12;
+  grid-area: cs;
+  margin-bottom: 5px;
+  background-color: #f4f4f4;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.content-wrapper .content-news {
+  grid-area: cn;
+  margin-bottom: 5px;
+}
+
+.content-wrapper .content-menu {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 12;
+  grid-area: cm;
+  margin-bottom: 5px;
+}
+
+.content-menu-item {
+  min-height: 100px;
+  margin-bottom: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-style: none;
+  border-width: 10px;
+  border-radius: 5px;
+  border-color: #999;
+  background-color: #333;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.content-menu-item:hover {
+  text-decoration: none;
+}
+
+.content-menu-item:hover .content-menu-item-title {
+  color: red;
+}
+
+.content-menu-item .content-menu-item-title {
+  width: 30%;
+  height: 100%;
+  min-height: 100px;
+  padding: 10px;
+  display: block;
+  color: #f4f4f4;
+  font-weight: bold;
+}
+
+.content-menu-item .content-menu-item-image {
+  width: 80%;
+  height: 100%;
+  min-height: 100px;
+  background-color: #999;
+  display: block;
+  -webkit-clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 /*# sourceMappingURL=main.css.map */
