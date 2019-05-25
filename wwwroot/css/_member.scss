@@ -1,0 +1,17 @@
+// RegisterLink
+.form-example {
+
+    border-style: solid;
+    border-width: 6px;
+    border-radius: $border-radius;
+    border-color: color(icon);
+
+    // 742 x 598
+    min-height: 350px;
+    max-height: 742px;
+    min-width: 280px;
+    max-width: 598px;
+    background-image: url(../images/register-link.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}

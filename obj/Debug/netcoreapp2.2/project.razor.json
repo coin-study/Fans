@@ -2964,6 +2964,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/U/Index.cshtml",
+      "TargetPath": "Views/U/Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/_ViewStart.cshtml",
       "TargetPath": "Views/_ViewStart.cshtml",
       "FileKind": "mvc"

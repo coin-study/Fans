@@ -105,27 +105,38 @@ namespace fans.Controllers
             return View(model);
         }
 
-        public IActionResult Register(int id) // club's id
+        public async Task<IActionResult> Register(int id) // club's id
         {
+            var userId = _userManager.GetUserId(User);
+            var user = await _userManager.FindByIdAsync(userId);
             var club = _clubService.GetById(id);
-            var idolList = _idolService.GetAllByClub(club)
-                .Select( idol => new IdolViewModel 
-                {
-                    Id = idol.Id,
-                    Name = idol.Name,
-                    EnglishName = idol.EnglishName,
-                    ClubId = idol.ClubId
-                });
 
-            var model = new RegisterMemberModel
+            var clubMembers = _memberService.GetByUserAndClub(user, club);
+
+            if (clubMembers != null) {
+                return RedirectToAction("RegisterLink", "Member", new { id = clubMembers.Id } );
+            }
+            else
             {
-                ClubId = club.Id,
-                ClubName = club.Name,
-                UserName = User.Identity.Name,
-                IdolList = idolList
-            };
+                var idolList = _idolService.GetAllByClub(club)
+                    .Select( idol => new IdolViewModel 
+                    {
+                        Id = idol.Id,
+                        Name = idol.Name,
+                        EnglishName = idol.EnglishName,
+                        ClubId = idol.ClubId
+                    });
 
-            return View(model);
+                var model = new RegisterMemberModel
+                {
+                    ClubId = club.Id,
+                    ClubName = club.Name,
+                    UserName = User.Identity.Name,
+                    IdolList = idolList
+                };
+
+                return View(model);
+            }
         }
 
         [HttpPost]

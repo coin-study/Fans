@@ -277,6 +277,20 @@ body, html {
   display: none;
 }
 
+.form-example {
+  border-style: solid;
+  border-width: 6px;
+  border-radius: 5px;
+  border-color: #535c68;
+  min-height: 350px;
+  max-height: 742px;
+  min-width: 280px;
+  max-width: 598px;
+  background-image: url(../images/register-link.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
 .content-wrapper {
   display: -ms-grid;
   display: grid;

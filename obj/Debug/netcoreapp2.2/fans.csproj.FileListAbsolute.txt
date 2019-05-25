@@ -73,3 +73,4 @@
 /Users/jackal/Projects/fans/obj/Debug/netcoreapp2.2/Razor/Views/Idol/club.g.cshtml.cs
 /Users/jackal/Projects/fans/obj/Debug/netcoreapp2.2/Razor/Views/Member/RegisterLink.g.cshtml.cs
 /Users/jackal/Projects/fans/obj/Debug/netcoreapp2.2/Razor/Views/Payment/Index.g.cshtml.cs
+/Users/jackal/Projects/fans/obj/Debug/netcoreapp2.2/Razor/Views/U/Index.g.cshtml.cs

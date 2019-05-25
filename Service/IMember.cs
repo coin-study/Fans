@@ -8,7 +8,8 @@ namespace fans.Service
     {
         Member GetById(int memberId);
         IEnumerable<Member> GetAll();
-
+        IEnumerable<Member> GetAllByUser(ApplicationUser user);
+        Member GetByUserAndClub(ApplicationUser user, Club club);
         Task Create(Member member);
         Task Update(int id, Member member);
         Task Delete(int memberId);

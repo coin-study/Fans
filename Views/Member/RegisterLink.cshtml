@@ -16,9 +16,12 @@
 
         <form asp-action="UpdateRegisterLink" method="post">
             
+            <div class="form-example">
+            </div>
+            <br />
             <div class="form-row">
-                <div class="form-group col-md-3">
-                    <label asp-for="RegisterLink">登記網址</label>
+                <div class="form-group col-md-9">
+                    <label asp-for="RegisterLink">請把電郵內的連結，貼到下方登記：</label>
                     <input asp-for="RegisterLink" class="form-control" required />
                 </div>
             </div>

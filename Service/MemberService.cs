@@ -65,6 +65,26 @@ namespace fans.Service
                 .FirstOrDefault();
         }
 
+        public IEnumerable<Member> GetAllByUser(ApplicationUser user)
+        {
+            return _context.Members.Where( member => member.User == user)
+                .Include( member => member.Club)
+                .Include( member => member.User)
+                .Include( member => member.Payment)
+                .Include( member => member.Favourite);
+        }
+
+        public Member GetByUserAndClub(ApplicationUser user, Club club)
+        {
+            return _context.Members
+                .Where( member => member.User == user )
+                .Where( member => member.Club == club )
+                    .Include( member => member.Club)
+                    .Include( member => member.User)
+                    .Include( member => member.Payment)
+                    .Include( member => member.Favourite)
+                    .FirstOrDefault();
+        }
         public async Task UpdateRegisterLink(int id, string url)
         {
             var member = GetById(id);
